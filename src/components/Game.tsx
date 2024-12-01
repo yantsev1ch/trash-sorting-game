@@ -164,7 +164,7 @@ const Game = () => {
                 </div>
             )}
 
-            {isCorrectAnswer !== null && (
+            {isCorrectAnswer !== null && !wastes.every((waste) => waste.isCorrect) && (
                 <div
                     style={{
                         position: 'absolute',
