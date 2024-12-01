@@ -4,6 +4,8 @@ import Game from "./components/Game.tsx";
 import {StartPage} from "./components/StartPage.tsx";
 import {useEffect, useState} from "react";
 import {Loader} from "./components/Loader/Loader.tsx";
+import background from './assets/images/background.jpg';
+import {preloadImages} from "./config/helpers.ts";
 
 const router = createBrowserRouter([
     {
@@ -20,11 +22,26 @@ const router = createBrowserRouter([
     },
 ]);
 
+
 const App = () => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        window.onload = () => setIsLoading(false);
+        const loadAssets = async () => {
+            const allImagePaths = [
+                background
+            ];
+
+            try {
+                await preloadImages(allImagePaths);
+
+                setIsLoading(false);
+            } catch (error) {
+                console.error('Ошибка загрузки изображений:', error);
+            }
+        };
+
+        loadAssets();
     }, []);
 
     if (isLoading) {
@@ -39,7 +56,8 @@ const App = () => {
                     height: '100vh'
                 }}>
                 <Loader/>
-            </div>)
+            </div>
+        )
     }
 
     return (

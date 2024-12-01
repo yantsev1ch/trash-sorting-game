@@ -7,7 +7,7 @@ export const StartPage = () => {
     const startGame = () => {
         navigate('/game');
     };
-    
+
     return (
         <div
             style={{
@@ -38,9 +38,9 @@ export const StartPage = () => {
                     color: '#000000',
                     width: '100%',
                 }}>
-                © 2024 Детский сад №3, группа 11. Все права защищены. Разработчик: <a href="https://t.me/yantsev1ch"
-                                                                                      target="_blank"
-                                                                                      rel="noopener noreferrer">@yantsev1ch</a>.
+                © 2024 Детский сад №3, группа 11. Все права защищены. Разработал: <a href="https://t.me/yantsev1ch"
+                                                                                     target="_blank"
+                                                                                     rel="noopener noreferrer">@yantsev1ch</a>.
             </footer>
         </div>
     );
