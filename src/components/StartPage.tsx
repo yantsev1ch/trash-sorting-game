@@ -1,35 +1,13 @@
 import {useNavigate} from "react-router-dom";
-import {Loader} from "./Loader/Loader.tsx";
-import {useEffect, useState} from "react";
 
 export const StartPage = () => {
-    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     const navigate = useNavigate();
 
     const startGame = () => {
         navigate('/game');
     };
-
-    useEffect(() => {
-        setTimeout(() => setIsLoading(false), 2000);
-    }, []);
-
-    if (isLoading) {
-        return (
-            <div
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 20,
-                    height: '100%'
-                }}>
-                <Loader/>
-            </div>)
-    }
-
+    
     return (
         <div
             style={{

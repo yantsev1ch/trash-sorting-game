@@ -2,6 +2,8 @@ import {createBrowserRouter, Navigate, RouterProvider} from 'react-router-dom';
 import './App.css'
 import Game from "./components/Game.tsx";
 import {StartPage} from "./components/StartPage.tsx";
+import {useEffect, useState} from "react";
+import {Loader} from "./components/Loader/Loader.tsx";
 
 const router = createBrowserRouter([
     {
@@ -19,6 +21,27 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        window.onload = () => setIsLoading(false);
+    }, []);
+
+    if (isLoading) {
+        return (
+            <div
+                style={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: 20,
+                    height: '100vh'
+                }}>
+                <Loader/>
+            </div>)
+    }
+
     return (
         <div style={{
             display: 'flex',
