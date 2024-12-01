@@ -11,5 +11,5 @@ export interface Waste {
     id: string;
     pathname: string;
     type: WasteType;
-    isCorrect: boolean;
+    isCorrect?: boolean;
 }
