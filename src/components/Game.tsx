@@ -15,10 +15,10 @@ const shuffleArray = <T, >(array: T[]): T[] => {
 
 const Game = () => {
     const [wastes, setWastes] = useState<Waste[]>([]);
-    const [feedback, setFeedback] = useState<{ [key in WasteType]?: boolean | null }>({});
     const [gameStarted, setGameStarted] = useState(false);
     const [gameOver, setGameOver] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
+    const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean | null>(null);
 
     useEffect(() => {
         const loadAssets = async () => {
@@ -80,7 +80,7 @@ const Game = () => {
     const handleDrop = (bin: Waste) => (item: Waste) => {
         const isCorrect = item.type === bin.type;
 
-        setFeedback((prev) => ({...prev, [bin.type]: isCorrect}));
+        setIsCorrectAnswer(isCorrect);
 
         if (isCorrect) {
             setWastes((prev) =>
@@ -95,7 +95,7 @@ const Game = () => {
         }
 
         setTimeout(() => {
-            setFeedback((prev) => ({...prev, [bin.type]: null}));
+            setIsCorrectAnswer(null);
         }, 1000);
     };
 
@@ -164,13 +164,27 @@ const Game = () => {
                 </div>
             )}
 
+            {isCorrectAnswer !== null && (
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                        fontSize: '124px',
+                        color: isCorrectAnswer ? 'green' : 'red',
+                    }}
+                >
+                    {isCorrectAnswer ? '✅' : '❌'}
+                </div>
+            )}
+
             <div style={{display: 'flex', justifyContent: 'space-around', width: '100%', alignItems: 'center'}}>
                 {bins.map((bin) => (
                     <TrashBin
                         key={bin.id}
                         pathname={bin.pathname}
                         onDrop={handleDrop(bin)}
-                        isCorrect={feedback[bin.type] ?? null}
                     />
                 ))}
             </div>
