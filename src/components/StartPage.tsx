@@ -48,10 +48,11 @@ export const StartPage = () => {
                     color: '#000000',
                     width: '100%',
                 }}>
-                © 2024 Мачулищанский детский сад №3, группа 11. Все права защищены. Разработал: <a
-                href="https://t.me/yantsev1ch"
-                target="_blank"
-                rel="noopener noreferrer">@yantsev1ch</a>.
+                <div>"Мачулищанский детский сад №3"</div>
+                <div>Все права защищены. Разработал: <a
+                    href="https://t.me/yantsev1ch"
+                    target="_blank"
+                    rel="noopener noreferrer">@yantsev1ch</a></div>
             </footer>
         </div>
     );
