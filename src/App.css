@@ -1,28 +1,29 @@
 #root {
-  background-image: url('./assets/images/background.jpg');
-  background-size: cover;
-  min-height: 100vh;
+    background-image: url('./assets/images/background.jpg');
+    background-size: cover;
+    min-height: 100vh;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 li {
-  list-style-type: none;
+    list-style-type: none;
 }
 
 input,
 button,
 textarea,
 select {
-  margin: 0;
-  font: inherit;
+    margin: 0;
+    font: inherit;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 

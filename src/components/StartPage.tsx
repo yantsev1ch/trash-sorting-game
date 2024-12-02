@@ -25,7 +25,17 @@ export const StartPage = () => {
                         width: 250,
                         backgroundColor: 'white',
                         borderRadius: '10px',
-                        border: 'none'
+                        border: 'none',
+                        transition: 'background-color 0.3s, color 0.3s',
+                        cursor: 'pointer',
+                    }}
+                    onMouseEnter={(e) => {
+                        (e.target as HTMLButtonElement).style.backgroundColor = '#c4c0c0';
+                        (e.target as HTMLButtonElement).style.color = '#333';
+                    }}
+                    onMouseLeave={(e) => {
+                        (e.target as HTMLButtonElement).style.backgroundColor = 'white';
+                        (e.target as HTMLButtonElement).style.color = 'black';
                     }}>
                 Начать играть
             </button>
@@ -34,13 +44,14 @@ export const StartPage = () => {
                     position: 'absolute',
                     bottom: 10,
                     textAlign: 'center',
-                    fontSize: '16px',
+                    fontSize: '18px',
                     color: '#000000',
                     width: '100%',
                 }}>
-                © 2024 Детский сад №3, группа 11. Все права защищены. Разработал: <a href="https://t.me/yantsev1ch"
-                                                                                     target="_blank"
-                                                                                     rel="noopener noreferrer">@yantsev1ch</a>.
+                © 2024 Мачулищанский детский сад №3, группа 11. Все права защищены. Разработал: <a
+                href="https://t.me/yantsev1ch"
+                target="_blank"
+                rel="noopener noreferrer">@yantsev1ch</a>.
             </footer>
         </div>
     );

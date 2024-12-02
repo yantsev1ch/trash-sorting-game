@@ -8,6 +8,7 @@ import {Waste, WasteType} from '../config/types.ts';
 import {bins} from '../config/config.ts';
 import {preloadImages} from "../config/helpers.ts";
 import {Loader} from './Loader/Loader.tsx';
+import Confetti from 'react-confetti';
 
 const shuffleArray = <T, >(array: T[]): T[] => {
     return array.sort(() => Math.random() - 0.5);
@@ -42,34 +43,55 @@ const Game = () => {
         if (isLoading || gameStarted) return;
 
         setWastes(shuffleArray([
-            {id: 'battery', pathname: images.wastes.battery, type: WasteType.Electronic, isCorrect: false},
-            {id: 'laptop', pathname: images.wastes.laptop, type: WasteType.Electronic, isCorrect: false},
-            {id: 'mobile', pathname: images.wastes.mobile, type: WasteType.Electronic, isCorrect: false},
             {id: 'glassBottle', pathname: images.wastes.glassBottle, type: WasteType.Glass, isCorrect: false},
             {id: 'glassCup', pathname: images.wastes.glassCup, type: WasteType.Glass, isCorrect: false},
-            {id: 'sodaBottle', pathname: images.wastes.sodaBottle, type: WasteType.Metal, isCorrect: false},
-            {id: 'scissors', pathname: images.wastes.scissors, type: WasteType.Metal, isCorrect: false},
-            {id: 'apple', pathname: images.wastes.apple, type: WasteType.Organic, isCorrect: false},
-            {id: 'cheese', pathname: images.wastes.cheese, type: WasteType.Organic, isCorrect: false},
-            {id: 'notebook', pathname: images.wastes.notebook, type: WasteType.Paper, isCorrect: false},
-            {id: 'paperStack', pathname: images.wastes.paperStack, type: WasteType.Paper, isCorrect: false},
+            {id: 'glassPlate', pathname: images.wastes.glassPlate, type: WasteType.Glass, isCorrect: false},
+            {id: 'glassVase', pathname: images.wastes.glassVase, type: WasteType.Glass, isCorrect: false},
+            {id: 'glassTumbler', pathname: images.wastes.glassTumbler, type: WasteType.Glass, isCorrect: false},
+            {id: 'organicBroccoli', pathname: images.wastes.organicBroccoli, type: WasteType.Organic, isCorrect: false},
+            {id: 'organicApple', pathname: images.wastes.organicApple, type: WasteType.Organic, isCorrect: false},
+            {id: 'organicBanana', pathname: images.wastes.organicBanana, type: WasteType.Organic, isCorrect: false},
+            {id: 'organicOrange', pathname: images.wastes.organicOrange, type: WasteType.Organic, isCorrect: false},
+            {
+                id: 'organicStrawberry',
+                pathname: images.wastes.organicStrawberry,
+                type: WasteType.Organic,
+                isCorrect: false
+            },
+            {id: 'organicCheese', pathname: images.wastes.organicCheese, type: WasteType.Organic, isCorrect: false},
+            {
+                id: 'organicOrangePeel',
+                pathname: images.wastes.organicOrangePeel,
+                type: WasteType.Organic,
+                isCorrect: false
+            },
+            {
+                id: 'paperCraftPackage2',
+                pathname: images.wastes.paperCraftPackage2,
+                type: WasteType.Paper,
+                isCorrect: false
+            },
+            {
+                id: 'paperCraftPackage1',
+                pathname: images.wastes.paperCraftPackage1,
+                type: WasteType.Paper,
+                isCorrect: false
+            },
+            {id: 'paperPiece', pathname: images.wastes.paperPiece, type: WasteType.Paper, isCorrect: false},
+            {id: 'paperBox', pathname: images.wastes.paperBox, type: WasteType.Paper, isCorrect: false},
+            {id: 'paperCraft', pathname: images.wastes.paperCraft, type: WasteType.Paper, isCorrect: false},
+            {id: 'plasticShampoo', pathname: images.wastes.plasticShampoo, type: WasteType.Plastic, isCorrect: false},
+            {
+                id: 'plasticToothbrush',
+                pathname: images.wastes.plasticToothbrush,
+                type: WasteType.Plastic,
+                isCorrect: false
+            },
             {id: 'plasticBag', pathname: images.wastes.plasticBag, type: WasteType.Plastic, isCorrect: false},
             {id: 'plasticBottle', pathname: images.wastes.plasticBottle, type: WasteType.Plastic, isCorrect: false},
-            {id: 'bulbs', pathname: images.wastes.bulbs, type: WasteType.Electronic, isCorrect: false},
-            {id: 'plates', pathname: images.wastes.plates, type: WasteType.Glass, isCorrect: false},
-            {id: 'vase', pathname: images.wastes.vase, type: WasteType.Glass, isCorrect: false},
-            {id: 'hammer', pathname: images.wastes.hammer, type: WasteType.Metal, isCorrect: false},
-            {id: 'keys', pathname: images.wastes.keys, type: WasteType.Metal, isCorrect: false},
-            {id: 'spring', pathname: images.wastes.spring, type: WasteType.Metal, isCorrect: false},
-            {id: 'broccoli', pathname: images.wastes.broccoli, type: WasteType.Organic, isCorrect: false},
-            {id: 'eggs', pathname: images.wastes.eggs, type: WasteType.Organic, isCorrect: false},
-            {id: 'sandwiches', pathname: images.wastes.sandwiches, type: WasteType.Organic, isCorrect: false},
-            {id: 'books', pathname: images.wastes.books, type: WasteType.Paper, isCorrect: false},
-            {id: 'list', pathname: images.wastes.list, type: WasteType.Paper, isCorrect: false},
-            {id: 'toiletPaper', pathname: images.wastes.toiletPaper, type: WasteType.Paper, isCorrect: false},
-            {id: 'shampoo', pathname: images.wastes.shampoo, type: WasteType.Plastic, isCorrect: false},
-            {id: 'yogurt', pathname: images.wastes.yogurt, type: WasteType.Plastic, isCorrect: false},
-            {id: 'shovel', pathname: images.wastes.shovel, type: WasteType.Plastic, isCorrect: false},
+            {id: 'plasticCola', pathname: images.wastes.plasticCola, type: WasteType.Plastic, isCorrect: false},
+            {id: 'plasticSnikers', pathname: images.wastes.plasticSnikers, type: WasteType.Plastic, isCorrect: false},
+            {id: 'plasticThumbler', pathname: images.wastes.plasticThumbler, type: WasteType.Plastic, isCorrect: false}
         ]));
 
         setGameStarted(true);
@@ -128,12 +150,15 @@ const Game = () => {
                     style={{
                         display: 'flex',
                         justifyContent: 'flex-end',
-                        alignItems: 'flex-end',
+                        alignItems: 'center',
                         height: '50vh',
                         flexDirection: 'column',
                         position: 'relative',
+                        width: '100%'
                     }}
                 >
+                    <Confetti/>
+
                     <button
                         onClick={restartGame}
                         style={{
@@ -143,6 +168,16 @@ const Game = () => {
                             backgroundColor: 'white',
                             borderRadius: '10px',
                             border: 'none',
+                            transition: 'background-color 0.3s, color 0.3s',
+                            cursor: 'pointer',
+                        }}
+                        onMouseEnter={(e) => {
+                            (e.target as HTMLButtonElement).style.backgroundColor = '#c4c0c0';
+                            (e.target as HTMLButtonElement).style.color = '#333';
+                        }}
+                        onMouseLeave={(e) => {
+                            (e.target as HTMLButtonElement).style.backgroundColor = 'white';
+                            (e.target as HTMLButtonElement).style.color = 'black';
                         }}
                     >
                         Играть снова

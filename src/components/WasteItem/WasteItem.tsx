@@ -45,8 +45,8 @@ const WasteItem = ({pathname, id, type, styles}: WasteItemProps) => {
                     display: 'block',
                 }}
                 src={pathname}
-                width="100px"
-                height="100px"
+                width="115px"
+                height="115px"
                 draggable={false}
             />
         </div>
